@@ -7,7 +7,7 @@ library(DT)
 
 shinyServer(function(input, output, session){ 
 
-  output$contents <- renderDT({ 
+  output$contents <- renderDT({ # need to update this renaming | some issues 
     inFile <- input$file1
     
     if(is.null(inFile))
@@ -23,7 +23,7 @@ shinyServer(function(input, output, session){
     foo<-{ 
       inFile <- input$file1
       if(is.null(inFile))
-        return(NULL)
+        return(NULL)               
       
       ext <- tools::file_ext(inFile$name)
       file.rename(inFile$datapath,
