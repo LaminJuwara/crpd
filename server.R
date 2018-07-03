@@ -2,6 +2,7 @@ library(shiny)
 library(ggplot2)
 library(dplyr)
 library(xlsx)
+library(readxl)
 library(DT)
 
 
@@ -48,18 +49,18 @@ shinyServer(function(input, output, session){
   })
   output$search<-renderDT({datasearch()}) 
 
-## Including the dashboard variable
-  # setwd("~/Desktop/crpdvariable/")
-  # dashdata<-read.xlsx("CPRD VARIABLE DEFINITION LOG.XLSX",keepFormulas = TRUE,sheetIndex = 1,header = TRUE)
-  # dashdata$File.path<-NA
-  # names(dashdata)<-c("Shorthand","broad","granular","file path","Purpose","Creator","Date Created",
-  #                    "Date Edited","Update Descriptions","Datebase Used","ICD Codes","ATC Codes",
-  #                    "Last Update","Codebrowser Version")
-  # write.csv(x = dashdata,"dashfile.csv",row.names = FALSE)
+# Including the dashboard variable
+# setwd("~/Desktop/crpdvariable/")
+# dashdata<-read_excel("CPRD VARIABLE DEFINITION LOG.XLSX",1,col_names = TRUE)
+# names(dashdata)<-c("Shorthand","broad","granular","file path","Purpose","Creator","Date Created",
+#                    "Date Edited","Update Descriptions","Datebase Used","ICD Codes","ATC Codes",
+#                    "Last Update","Codebrowser Version")
+# dashdata$`file path`<-NA
+# write.csv(x = dashdata,"dashfile.csv",row.names = FALSE)
   
   dashtab<-reactive({
     data<-read.csv(file = "dashfile.csv",header = TRUE)
-    return(datatable(data,editable = TRUE,))
+    return(datatable(data,editable = TRUE))
   })
   output$dash<-renderDT({
     dashtab()

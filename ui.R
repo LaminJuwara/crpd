@@ -6,7 +6,7 @@ shinyUI(
   fluidPage(
     titlePanel(
       fluidRow( 
-        column(4, h3(strong("CPRD Variable")),offset = 1 ),
+        column(4, h3(strong("CPRD Database")),offset = 1 ),
         column(4, offset = 7, img(src='CNODES_logo.png', align = "right", height = "25px"))
       )
       ),

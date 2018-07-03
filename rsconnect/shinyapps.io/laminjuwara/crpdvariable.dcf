@@ -5,6 +5,6 @@ account: laminjuwara
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 370953
-bundleId: 1458790
+bundleId: 1461982
 url: https://laminjuwara.shinyapps.io/crpdvariable/
-when: 1530407245.85924
+when: 1530591624.5375
