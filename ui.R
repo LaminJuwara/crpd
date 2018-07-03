@@ -13,21 +13,22 @@ shinyUI(
     sidebarPanel(
         fluidPage( 
           br(),
-          column(12,
-            fileInput('file1', 'Choose Variable',
-                      accept = c(".xlsx")
-            ), align="center"
-          )
-
-        )
-
-        ),
+          fluidRow(column(12,fileInput('file1','Choose Variable',
+                                       accept = c(".xlsx")), align="center")),
+          fluidRow(column(6, actionButton(inputId = "submitSearch", label = "Search") , align='center'),
+                   column(4, actionButton(inputId = "submitEdit", label = "Edit Variable") , align='center')))),
 
     mainPanel(
-      tabsetPanel(type = "tabs",
-                  tabPanel("Search", fluidRow(dataTableOutput(outputId= "search"))),
-                  tabPanel("Edit/add", fluidRow(dataTableOutput(outputId= "contents"))),
-                  tabPanel("About", "") )
+      tabsetPanel(
+        id = "tabs",
+        tabPanel(
+          title = "Dashboard: CPRD variable definition log",
+          fluidRow(dataTableOutput(outputId= "dash"))),
+        tabPanel("Search", fluidRow(dataTableOutput(outputId= "search"))),
+        tabPanel("Edit/add", fluidRow(dataTableOutput(outputId= "contents"))),
+        tabPanel("About", textOutput("about.txt")) 
+        
+      )
     )
 
 
